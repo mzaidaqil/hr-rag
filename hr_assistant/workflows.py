@@ -55,9 +55,9 @@ def update_address_next_prompt(state: UpdateAddressState) -> str:
             f"- state: {state.state}\n"
             f"- postal_code: {state.postal_code}\n"
             f"- country: {state.country}\n\n"
-            "Reply `confirm` to submit, or reply with corrections."
+            "Reply `confirm` to submit, `cancel` to stop, or reply with corrections."
         )
-    return "Reply `confirm` to submit, or reply with corrections."
+    return "Reply `confirm` to submit, `cancel` to stop, or reply with corrections."
 
 
 def parse_address_fields(text: str, state: UpdateAddressState) -> UpdateAddressState:

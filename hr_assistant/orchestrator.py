@@ -38,6 +38,13 @@ class Orchestrator:
         if r.route == "updateAddress":
             state = self._workflow_state.get(user_id) or UpdateAddressState()
 
+            if text.strip().lower() in {"cancel", "stop", "exit"}:
+                self._workflow_state.pop(user_id, None)
+                return ChatResponse(
+                    text="Address update cancelled. How can I help you next?",
+                    route="updateAddress",
+                )
+
             if text.strip().lower() == "confirm":
                 # Must have all fields first
                 missing_prompt = update_address_next_prompt(state)
